@@ -6,9 +6,7 @@
     <li>
       <%= link_to user.name, user %>
       <% if isAdmin %>
-
        | <%= link_to("delete", user, method: :delete, data: { confirm: "Are you sure?" }) %>
-       | <%= link_to "Profile", controller: "users", action: "destroy", id: user %>
        <% end %>
     </li>
   <% end %>

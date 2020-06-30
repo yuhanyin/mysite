@@ -16,11 +16,15 @@ module SessionsHelper
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      if user && user.authenticated?(:remember, cookies[:remember_token])
         log_in user
         @current_user = user
       end
     end
+  end
+
+  def isAdmin
+    return current_user.role == 1
   end
 
   # 如果指定用户是当前用户，返回 true
