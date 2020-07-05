@@ -1,11 +1,28 @@
 <% provide(:title, @user.name) %>
-<div class="row">
- <aside class="col-md-4">
- <section class="user_info">
- <h1>
-  <%= gravatar_for @user %>
+
+<div class="page-header">
+  <h1>Hello, <%= current_user.name %> <small>there are all orders for
+  <% if current_user?(@user) %>
+  you 
+  <% else %>
   <%= @user.name %>
- </h1>
- </section>
- </aside>
+  <% end %>
+   ---- count (<%= @user.orders.count %>)</small> </h1>
+</div>
+
+<div class="row">
+ <div class="col-md-12">
+  <p class="lead">user email: <%= @user.email %> </p>
+</div>
+</div>
+
+<div class="row">
+ <div class="col-md-12">
+  <% if @user.orders.any? %>
+    <ol class="orders">
+      <%= render @orders %>
+    </ol>
+    <%= will_paginate @orders %>
+  <% end %>
+</div> 
 </div>

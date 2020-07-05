@@ -1,0 +1,61 @@
+<% provide(:title, "Create new Product") %>
+<h1 class="text-center">Create new Product</h1>
+
+<div class="row">
+ <div class="col-md-6 col-md-offset-3">
+ 
+    <%= form_for(@product) do |f| %>
+        <%= render "shared/error_messages", collection: @product, as: :item %>
+
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+            <%= f.label :price %>
+            <%= f.text_field :price, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :body %>
+            <%= f.text_field :body, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :mileage %>
+            <%= f.text_field :mileage, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :engV %>
+            <%= f.text_field :engV, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :engType %>
+            <%= f.text_field :engType, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :registration %>
+            <%= f.text_field :registration, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :year %>
+            <%= f.text_field :year, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :model %>
+            <%= f.text_field :model, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :drive %>
+            <%= f.text_field :drive, class: "form-control" %>
+        </div>
+
+        <%= f.submit "create a car", class: "btn btn-primary" %>
+    <% end %>
+
+ </div>
+</div>

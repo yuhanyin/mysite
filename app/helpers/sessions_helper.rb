@@ -24,7 +24,7 @@ module SessionsHelper
   end
 
   def isAdmin
-    return current_user.role == 1
+    return current_user && current_user.role == 1
   end
 
   # 如果指定用户是当前用户，返回 true

@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_033246) do
+ActiveRecord::Schema.define(version: 2020_06_27_114624) do
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "state"
+    t.integer "user_id"
+    t.integer "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "del", default: 0
+    t.string "name"
+    t.integer "price"
+    t.string "body"
+    t.string "mileage"
+    t.string "engV"
+    t.string "engType"
+    t.string "registration"
+    t.integer "year"
+    t.string "model"
+    t.string "drive"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

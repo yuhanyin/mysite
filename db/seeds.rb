@@ -5,17 +5,39 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name: "admin",
-             email: "admin@admin.com",
-             role: 1,
-             password: "123",
-             password_confirmation: "123",
-             activated: true,
-             activated_at: Time.zone.now)
+require "csv"
 
-99.times do |n|
+csv_text = File.read(Rails.root.join("lib", "test.csv"))
+csv = CSV.parse(csv_text.scrub, headers: true)
+
+csv.each do |row|
+  t = Product.create!(
+    del: 0,
+    name: row["car"],
+    price: row["price"],
+    body: row["body"],
+    mileage: row["mileage"],
+    engV: row["engV"],
+    engType: row["engType"],
+    registration: row["registration"],
+    year: row["year"],
+    model: row["model"],
+    drive: row["drive"],
+  )
+  puts "#{t.name}, #{t.price} saved"
+end
+
+@admin = User.create!(name: "admin",
+                      email: "admin@admin.com",
+                      role: 1,
+                      password: "123",
+                      password_confirmation: "123",
+                      activated: true,
+                      activated_at: Time.zone.now)
+
+20.times do |n|
   name = Faker::Name.name
-  email = "example-#{n + 1}@exp.org"
+  email = "user#{n + 1}@user.com"
   password = "123"
   User.create!(name: name,
                email: email,
@@ -23,4 +45,8 @@ User.create!(name: "admin",
                activated_at: Time.zone.now,
                password: password,
                password_confirmation: password)
+
+  # state = ((n + 1) % 3) + 1
+  # @admin.orders.create!(product: product, state: state)
+  # Order.create!(user_id: 2, product: product, state: state)
 end

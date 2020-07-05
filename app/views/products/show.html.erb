@@ -1,0 +1,37 @@
+<% provide(:title, @product.name) %>
+
+<div class="page-header">
+  <h1>Show Page: <%= @product.name %> </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+            <dt>Price</dt>
+            <dd><%= @product.price %></dd>
+            <dt>body</dt>
+            <dd><%= @product.body %></dd>
+            <dt>mileage</dt>
+            <dd><%= @product.mileage %></dd>
+            <dt>engV</dt>
+            <dd><%= @product.engV %></dd>
+            <dt>engType</dt>
+            <dd><%= @product.engType %></dd>
+            <dt>registration</dt>
+            <dd><%= @product.registration %></dd>
+            <dt>year</dt>
+            <dd><%= @product.year %></dd>
+            <dt>model</dt>
+            <dd><%= @product.model %></dd>
+            <dt>drive</dt>
+            <dd><%= @product.drive %></dd>
+    </dl>
+ </div>
+  <div class="col-md-3">
+      <%= link_to "buy it", new_order_path(pid: @product.id), class: "btn btn-primary btn-lg" %>
+      <% if isAdmin %>
+        <%= link_to "edit", edit_product_path(@product), class: "btn btn-info btn-lg" %>
+        <% end %>
+   </div>
+
+</div>

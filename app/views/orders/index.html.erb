@@ -1,0 +1,52 @@
+<% provide(:title, "All orders") %>
+
+<div class="page-header">
+  <h1>All orders</h1>
+</div>
+
+
+<% @orders.each do |order| %>
+<% # 和_order的模板一样, 只是多了用户信息 %>
+<div class="panel panel-default" id="order-<%= order.id %>">
+  <div class="panel-heading">
+    payment id: <%= order.id %> 
+    user: <%= link_to order.user.name, user_path(order.user) %>
+     <span class="timestamp pull-right">
+      bought <%= time_ago_in_words(order.created_at) %> ago.
+      </span>
+  </div>
+  <div class="panel-body">
+    <address>
+         <strong> <%= order.product.name %></strong><br>
+         price: <%= order.product.price %><br>
+   </address>
+    <address>
+         <strong>Address: 1355 Market Street, Suite 900</strong><br>
+   </address>
+    <address>
+         <strong>current state: 
+         <% # 1 付款成功待发货， 2 发货，运输中 3 确认收货 %>
+         <% if order.state == 1 %>
+         待发货
+         <% elsif order.state == 2 %>
+         运输中
+         <% elsif order.state == 3 %>
+         订单完成
+         <% end %>
+         </strong><br>
+   </address>
+
+    <% if isAdmin && order.state == 1 %>
+      <%= link_to "发货", { :action => "change", :controller => "orders", :id => order.id, next_state: 2 }, class: "btn btn-primary" %>
+    <% end %>
+    <% if order.state == 2 %>
+    <%= link_to "确认收货", { :action => "change", :controller => "orders", :id => order.id, next_state: 3 }, class: "btn btn-success" %>
+    <% end %>
+
+  </div>
+</div>
+
+<% end %>
+
+
+<%= will_paginate %>

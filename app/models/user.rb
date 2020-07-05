@@ -2,6 +2,8 @@ class User < ApplicationRecord
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
   before_save { self.email = self.email.downcase }
+  has_many :orders, dependent: :destroy # 有许多订单
+  has_many :products, through: :orders # 购买了许多商品, 通过订单关联
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates(:name, {
