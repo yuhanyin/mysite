@@ -1,5 +1,6 @@
 <% provide(:title, @product.name) %>
 
+
 <div class="page-header">
   <h1>Show Page: <%= @product.name %> </h1>
 </div>
@@ -35,3 +36,31 @@
    </div>
 
 </div>
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script type="text/javascript">  
+function createMarker(map, point, content) {
+  var marker = new google.maps.Marker({
+    position: point,
+    map: map
+  });
+  google.maps.event.addListener(marker, "click", function(evt) {
+    infowindow.setContent(content + "<br>" + marker.getPosition().toUrlValue(6));
+    infowindow.open(map, marker);
+  });
+  return marker;
+}
+
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+</script>
+<script src="//maps.google.com/maps/api/js?key=AIzaSyDMzvUhOVsGYyz9APhUueeF8Zi-qwTLRkA&callback=initMap"></script>  

@@ -12,6 +12,23 @@
   <% end %>
 </div>
 
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input id="search" type="text" class="form-control" placeholder="Search for brand">
+      <span class="input-group-btn">
+        <script>
+          function jump() {
+            var val = document.getElementById('search').value;
+            location.href = val === '' ? '/' : '/?search=' + val;
+          }
+        </script>
+        <button onclick="jump()" class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+
 <table class="table table-hover">
   <thead>
     <th>car brand</th>

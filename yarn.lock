@@ -3223,6 +3223,11 @@ globule@^1.0.0:
     lodash "~4.17.10"
     minimatch "~3.0.2"
 
+gmaps@^0.4.25:
+  version "0.4.25"
+  resolved "https://registry.npm.taobao.org/gmaps/download/gmaps-0.4.25.tgz#ea98fa83668fb07b879b47d989b5ee1504d33455"
+  integrity sha1-6pj6g2aPsHuHm0fZibXuFQTTNFU=
+
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.2.2:
   version "4.2.4"
   resolved "https://registry.npm.taobao.org/graceful-fs/download/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
@@ -7010,6 +7015,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.npm.taobao.org/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+underscore@^1.10.2:
+  version "1.10.2"
+  resolved "https://registry.npm.taobao.org/underscore/download/underscore-1.10.2.tgz?cache=0&sync_timestamp=1585603748606&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Funderscore%2Fdownload%2Funderscore-1.10.2.tgz#73d6aa3668f3188e4adb0f1943bd12cfd7efaaaf"
+  integrity sha1-c9aqNmjzGI5K2w8ZQ70Sz9fvqq8=
 
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"

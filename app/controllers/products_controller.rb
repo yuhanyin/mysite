@@ -17,7 +17,11 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.where(del: 0).paginate(page: params[:page], per_page: 10)
+    if (params[:search])
+      @products = Product.where("name LIKE '%#{params[:search]}%'").paginate(page: params[:page], per_page: 10)
+    else
+      @products = Product.where(del: 0).paginate(page: params[:page], per_page: 10)
+    end
   end
 
   # get create new
