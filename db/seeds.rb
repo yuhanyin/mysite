@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "csv"
 
-csv_text = File.read(Rails.root.join("lib", "test.csv"))
+csv_text = File.read(Rails.root.join("lib", "car_ad.csv"))
 csv = CSV.parse(csv_text.scrub, headers: true)
 
 csv.each do |row|
