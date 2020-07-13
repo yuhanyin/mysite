@@ -1,34 +1,44 @@
 # README
 
+# README for the Ireneyyhcarshop > #
+Ruby 2.5.1  Rails 5.2.1 (this should be correct for your version)
+A live version is deployed on Heroku, and can be accessed using the following link:
+https://ireneyyhcarshop.herokuapp.com/
+You can use these account details to log in (as required in the last assessment)
+Admin - admin@admin.com/123
+Normal user - 123@123.com/123
+
+## running the application locally ##
+
 ## local dev
 
 ```sh
-# 拉取github上的仓库
+# Pull the warehouse on github
 git clone https://github.com/yuhanyin/mysite.git
 
-# 开发环境安装依赖
+# Development environment installation dependencies
 bundle install --without production
 
-# 执行数据库初始化工作 
+# Perform database initialization
 rails db:migrate:reset
 # or 
 bundle exec rake db:migrate
 
-#线上环境drop数据库需要以下命令
+#The online environment drop database requires the following commands
 RAILS_ENV=production rake db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1  
 
-# 清空数据, 一般因为权限问题会执行失败, 如过失败, 可以手动删除db目录下的development.sqlit3
+# Clear the data, generally due to permission issues will fail to execute, if it fails, you can manually delete development.sqlit3 in the db directory
 bundle exec rake db:migrate:reset
-# 执行seeds.rb, 创建测试数据, 导入了lib文件夹里的csv数据
+# Execute seeds.rb, create test data, import csv data in lib folder
 bundle exec rake db:seed
 
-# 执行测试
+# Perform test
 rails test
 
-# 本地开启服务进行开发
+# Open the service locally for development
 rails server
 
-# 本地模拟线上调试, 手动添加环境变量
+# Local analog online debugging, manually add environment variables
 rake db:migrate RAILS_ENV=production
 rake db:seed RAILS_ENV=production
 rails server -e production
@@ -39,3 +49,8 @@ rails server -e production
 
 ## depoly
 
+## These are the parts that are not working correctly ##
+
+I tried to integrate <x> by doing <w> in these file <v,z, etc>
+
+This didn't work, so I commented it out so that you could see the code.
