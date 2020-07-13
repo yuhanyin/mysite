@@ -1,7 +1,7 @@
 # README
 
 # README for the Ireneyyhcarshop > #
-Ruby 2.5.1  Rails 5.2.1 (this should be correct for your version)
+Ruby 2.6.3 (this should be correct for your version)
 A live version is deployed on Heroku, and can be accessed using the following link:
 https://ireneyyhcarshop.herokuapp.com/
 You can use these account details to log in (as required in the last assessment)
