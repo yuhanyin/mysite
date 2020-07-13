@@ -41,7 +41,8 @@ class User < ApplicationRecord
 
   # 发送激活邮件
   def send_activation_email
-    UserMailer.account_activation(self).deliver_now
+    UserMailer.account_activation(self)
+    # UserMailer.account_activation(self).deliver_now
   end
 
   # 激活digest
@@ -52,7 +53,8 @@ class User < ApplicationRecord
 
   # 发送密码重设邮件
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self)
+    # UserMailer.password_reset(self).deliver_now
   end
 
   # 重置密码digest
