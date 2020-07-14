@@ -23,6 +23,8 @@
       <%= render @orders %>
     </ol>
     <%= will_paginate @orders %>
+  <% else %>
+    <h3>no order , go to the home page to buy</h3>
   <% end %>
 </div> 
 </div>

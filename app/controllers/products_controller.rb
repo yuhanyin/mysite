@@ -17,8 +17,14 @@ class ProductsController < ApplicationController
   end
 
   def index
-    if (params[:search])
-      @products = Product.where("name LIKE '%#{params[:search]}%'").paginate(page: params[:page], per_page: 10)
+    name = params[:search]
+    if (name)
+      # case-insensitive search for name
+      @products = Product
+        .where("lower(name) LIKE lower(?) OR lower(name) LIKE lower(?)", "%#{name}%", "%#{name}%")
+        .paginate(page: params[:page], per_page: 10)
+      # .where("lower(name) = ?", name.downcase)
+      # where("name LIKE '%#{params[:search]}%'")
     else
       @products = Product.where(del: 0).paginate(page: params[:page], per_page: 10)
     end

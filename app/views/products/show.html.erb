@@ -2,14 +2,16 @@
 
 
 <div class="page-header">
-  <h1>Show Page: <%= @product.name %> </h1>
+  <h1>
+  Car Detail: <%= @product.name + "  " + @product.model %> 
+  <br>
+  the price only :  <i> <%= @product.price %> Now!!!</i>
+  </h1>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-            <dt>Price</dt>
-            <dd><%= @product.price %></dd>
             <dt>body</dt>
             <dd><%= @product.body %></dd>
             <dt>mileage</dt>
@@ -31,7 +33,7 @@
   <div class="col-md-3">
       <%= link_to "buy it", new_order_path(pid: @product.id), class: "btn btn-primary btn-lg" %>
       <% if isAdmin %>
-        <%= link_to "edit", edit_product_path(@product), class: "btn btn-info btn-lg" %>
+        <%= link_to "edit the info", edit_product_path(@product), class: "btn btn-info btn-lg" %>
         <% end %>
    </div>
 

@@ -1,14 +1,14 @@
-<% provide(:title, "All my products") %>
+<% provide(:title, "Index") %>
 
 <div class="page-header">
   <% if isAdmin %>
-      <%= link_to "add new product", new_product_path, class: "pull-right btn btn-primary" %>
+      <%= link_to "add new product  ( admin only )", new_product_path, class: "pull-right btn btn-primary" %>
   <% end %>
 
   <% if current_user %>
-    <h1>Hello, <%= current_user.name %> <small>welcome to my store!</small></h1>
+    <h1>Hello, <%= current_user.name %> <small>welcome to Ireney used car store!</small></h1>
   <% else %>
-    <h1>Hello, Guest <small>welcome to my store! you can login or sign up</small></h1>
+    <h1>Hello, Guest <small>welcome to Ireney used car store! you can login or sign up</small></h1>
   <% end %>
 </div>
 
@@ -31,24 +31,28 @@
 
 <table class="table table-hover">
   <thead>
-    <th>car brand</th>
+    <th>cars</th>
     <th>year</th>
     <th>mileage</th>
+    <th>body</th>
+    <th>engType</th>
     <th>price</th>
     <th></th>
-    <th></th>
     <% if isAdmin %>
-    <th>control</th>
+    <th>control (  only admin can see )</th>
     <% end %>
   </thead>
   <tbody>
     <% @products.each do |product| %>
     <tr>
-      <td><%= product.name %></td>
+      <td>
+        <%= link_to product.name + "  " + product.model, product %>
+      </td>
       <td><%= product.year %></td>
       <td><%= product.mileage %></td>
-      <td><%= product.price %></td>      
-      <td><%= link_to "see the detail", product %></td>      
+      <td><%= product.body %></td>
+      <td><%= product.engType %></td>
+      <td style=""><%= product.price %></td>      
       <td><%= link_to "buy now", new_order_path(pid: product.id) %></td>      
       <% if isAdmin %>
         <td>
