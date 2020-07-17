@@ -14,7 +14,7 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <div id="charts" style="width: 100%;height:400px;">
+    <div id="charts" style="width: 100%;height:600px;">
     </div>
     <script type="text/javascript">
         function jump() {
@@ -30,29 +30,75 @@
           var myChart = echarts.init(document.getElementById('charts'));
           myChart.showLoading();
           $.get('/products_count').done(function (data) {
-              var xdata = [];
-              var ydata = [];
+              var sort_arr = [], x_hot = [], y_hot = [];
               for(var key in data){
                 var val = data[key];
-                xdata.push(key);
-                ydata.push(val);
-              } 
-              var option = {
-                  title: {
-                      text: 'Histogram of all brands'
-                  },
-                  tooltip: {},
-                  legend: {
-                      data:['amount']
-                  },
-                  xAxis: { data: xdata },
-                  yAxis: {},
-                  series: [{
-                      name: 'amount',
-                      type: 'bar',
-                      data: ydata
-                  }]
-              };
+                sort_arr.push({ key: key, val: val});
+              }
+              var arr = sort_arr.sort(function f(a,b) { return b.val - a.val });
+              arr.forEach(function(it) {
+                x_hot.push(it.key);
+                y_hot.push(it.val);
+              });
+    var option = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow',
+                label: {
+                    show: true
+                }
+            }
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                mark: {show: true},
+            }
+        },
+        calculable: true,
+        legend: {
+            data: ['amounts'],
+            itemGap: 5
+        },
+        grid: {
+            top: '12%',
+            left: '1%',
+            right: '10%',
+            containLabel: true
+        },
+        xAxis: { data: x_hot },
+        yAxis: {},
+        dataZoom: [
+            {
+                show: true,
+                start: 0,
+                end: 100
+            },
+            {
+                type: 'inside',
+                start: 94,
+                end: 100
+            },
+            {
+                show: true,
+                yAxisIndex: 0,
+                filterMode: 'empty',
+                width: 30,
+                height: '80%',
+                showDataShadow: false,
+                left: '93%'
+            }
+        ],
+        series: [
+            {
+                name: 'amout',
+                type: 'bar',
+                data: y_hot
+            },
+        ]
+    };
+
               myChart.setOption(option);
               myChart.hideLoading();
           });

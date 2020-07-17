@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   end
 
   def count
-    res = Product.group(:name).count
+    res = Product.unscoped.group(:name).count
     render :json => res
   end
 
