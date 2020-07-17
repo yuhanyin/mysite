@@ -16,6 +16,11 @@ class ProductsController < ApplicationController
     )
   end
 
+  def count
+    res = Product.group(:name).count
+    render :json => res
+  end
+
   def index
     name = params[:search]
     if (name)

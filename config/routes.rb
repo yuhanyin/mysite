@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :products
+  get "products_count", to: "products#count"
 
   resources :orders
   get "orders/:id/state/:next_state", to: "orders#change"

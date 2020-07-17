@@ -4,13 +4,14 @@
 Ruby 2.6.3 (this should be correct for your version)
 A live version is deployed on Heroku, and can be accessed using the following link:
 https://ireneyyhcarshop.herokuapp.com/
+
 You can use these account details to log in (as required in the last assessment)
+
 Admin - admin@admin.com/123
-Normal user - 123@123.com/123
 
-## running the application locally ##
+Normal user - user1@user.com/123 user2@user.com/123 ...
 
-## local dev
+## running the application locally
 
 ```sh
 # Pull the warehouse on github
@@ -44,8 +45,6 @@ rake db:seed RAILS_ENV=production
 rails server -e production
 ```
 
-测试帐号更改在 db/seed.rb里, 分别创建了admin帐号和20个user账号, 
-在代码第10行, 导入了lib文件夹里的csv数据9000+条, 也可以把csv的名字改成test, 里面有20条测试数据, 因为本地开发数据量导入非常耗时
 
 ## depoly
 
